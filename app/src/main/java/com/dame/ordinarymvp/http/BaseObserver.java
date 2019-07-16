@@ -43,10 +43,9 @@ public abstract class BaseObserver<T> implements Observer<HttpResult<T>> {
 
     @Override
     public void onNext(HttpResult<T> result) {
-        Log.e("yml", "onNext: "+result.code );
         hideLoadingDialog();
         if (result.isSuccess()) {
-            Log.e("yml", "onNext: "+result.toString());
+            Log.e("Okhttp", "onNext: "+result.toString());
             onSuccess(result);
         } else {
             //TODO API异常处理
@@ -77,7 +76,6 @@ public abstract class BaseObserver<T> implements Observer<HttpResult<T>> {
      */
     @Override
     public void onComplete() {
-        Log.e("yml", "onComplete: " );
         hideLoadingDialog();
     }
 
