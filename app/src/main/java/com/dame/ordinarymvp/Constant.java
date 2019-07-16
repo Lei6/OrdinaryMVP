@@ -11,7 +11,7 @@ public class Constant {
     public static final String IMAGE_CACHE = BASE_FILE_CACHE_URL + File.separator + "image" + File.separator + "temp";   //图片缓存路径
 
     //测试地址一
-    public static final String BASE_WWW = "";
+    public static final String BASE_WWW = "https://www.mxnzp.com/api/";
     public static final String BASE_URL = "";
 
 

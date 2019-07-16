@@ -2,6 +2,7 @@ package com.dame.ordinarymvp.http;
 
 
 import android.accounts.NetworkErrorException;
+import android.util.Log;
 
 
 import com.dame.ordinarymvp.http.exception.ServerException;
@@ -42,8 +43,10 @@ public abstract class BaseObserver<T> implements Observer<HttpResult<T>> {
 
     @Override
     public void onNext(HttpResult<T> result) {
+        Log.e("yml", "onNext: "+result.code );
         hideLoadingDialog();
         if (result.isSuccess()) {
+            Log.e("yml", "onNext: "+result.toString());
             onSuccess(result);
         } else {
             //TODO API异常处理
@@ -53,6 +56,7 @@ public abstract class BaseObserver<T> implements Observer<HttpResult<T>> {
 
     @Override
     public void onError(Throwable e) {
+        Log.e("yml", "onError: " );
         hideLoadingDialog();
         if (e instanceof ConnectException
                 || e instanceof TimeoutException
@@ -73,6 +77,7 @@ public abstract class BaseObserver<T> implements Observer<HttpResult<T>> {
      */
     @Override
     public void onComplete() {
+        Log.e("yml", "onComplete: " );
         hideLoadingDialog();
     }
 

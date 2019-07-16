@@ -22,6 +22,9 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
+        initView();
+        initData();
+        initListener();
     }
 
 

@@ -35,9 +35,9 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         if (useEventBus()) {
             EventBus.getDefault().register(this);//注册eventBus
         }
-        initView();
-        initData();
-        initListener();
+//        initView();
+//        initData();
+//        initListener();
     }
 
 

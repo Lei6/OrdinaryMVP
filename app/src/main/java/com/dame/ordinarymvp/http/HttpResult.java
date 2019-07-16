@@ -12,12 +12,12 @@ public class HttpResult<T> {
      * object : {}
      * refrsh : true
      */
-    private String SUCCESS = "100";
-    private String FAIL = "101";
+    private String SUCCESS = "1";
+    private String FAIL = "0";
     private String OVERTIME = "102";
     public String info;
     public String code;
-    public T object;
+    public T data;
     public boolean refrsh;
 
 
@@ -39,7 +39,7 @@ public class HttpResult<T> {
         return "HttpResult{" +
                 "info='" + info + '\'' +
                 ", code=" + code +
-                ", object=" + object +
+                ", data=" + data +
                 ", refrsh=" + refrsh +
                 '}';
     }

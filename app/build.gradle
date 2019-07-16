@@ -59,4 +59,5 @@ dependencies {
     /*内存泄漏检测工具 **/
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }

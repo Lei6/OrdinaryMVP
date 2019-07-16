@@ -23,6 +23,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import okio.Buffer;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -62,12 +63,18 @@ public class BaseRetrofit {
         if (retrofit == null) {
             synchronized (BaseRetrofit.class) {
                 if (retrofit == null) {
+
+                    //添加一个log拦截器,打印所有的log
+                    HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+                    //可以设置请求过滤的水平,body,basic,headers
+                    httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
                     //指定缓存路径，缓存大小
                     Cache cache = new Cache(BaseApplication.getContext().getCacheDir(), 1024 * 1024 * 100);
                     OkHttpClient okHttpClient = new OkHttpClient.Builder()
                             .cache(cache)
                             .retryOnConnectionFailure(true)
-                            .addInterceptor(sLoggingInterceptor)
+                            .addInterceptor(httpLoggingInterceptor)
                             .addInterceptor(sRewriteCacheControlInterceptor)
                             .addNetworkInterceptor(sRewriteCacheControlInterceptor)
                             .connectTimeout(15, TimeUnit.SECONDS)//连接超时时间
@@ -76,6 +83,7 @@ public class BaseRetrofit {
                             .retryOnConnectionFailure(false)//连接不上是否重连,false不重连
                             .build();
 
+                    // 获取retrofit的实例
                     retrofit = new Retrofit.Builder()
                             .client(okHttpClient)
                             .addConverterFactory(GsonConverterBodyFactory.create())
@@ -115,26 +123,6 @@ public class BaseRetrofit {
                         .removeHeader("Pragma")
                         .build();
             }
-        }
-    };
-
-    /**
-     * 打印返回的json数据拦截器
-     */
-    private static Interceptor sLoggingInterceptor = new Interceptor() {
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            final Request request = chain.request();
-            Buffer requestBuffer = new Buffer();
-            if (request.body() != null) {
-                request.body().writeTo(requestBuffer);
-            } else {
-                Logger.d("LogTAG", "request.body()==null");
-            }
-            //打印url信息
-            Logger.w(request.url() + (request.body() != null ? "?" + parseParams(request.body(), requestBuffer) : ""));
-            final Response response = chain.proceed(request);
-            return response;
         }
     };
 
