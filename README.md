@@ -1,2 +1,3 @@
 # OrdinaryMVP
-MVP+RxJava2+Retrofit+okhttp 基础框架，便于快速开发
+参考开源demo https://github.com/git-xuhao/AndroidBaseMvp
+MVP+RxJava2+Retrofit+okhttp 基础框架
