@@ -17,7 +17,6 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 /**
- * @author xuhao
  * @date 2018/6/12 10:51
  * @desc Observer基类
  */

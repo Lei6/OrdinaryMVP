@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import java.io.Serializable;
 
 /**
- * @author xuhao
  * @date 2018/6/12 13:15
  * @desc
  */
