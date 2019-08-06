@@ -1,4 +1,4 @@
-package com.dame.ordinarymvp.mvp;
+package com.dame.ordinarymvp.base;
 
 public interface IView {
 

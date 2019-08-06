@@ -4,9 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.dame.ordinarymvp.mvp.BasePresenter;
-import com.dame.ordinarymvp.mvp.IView;
-
 
 /**
  * @author 姚明亮

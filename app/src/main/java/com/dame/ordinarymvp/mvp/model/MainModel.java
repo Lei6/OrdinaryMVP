@@ -1,10 +1,10 @@
-package com.dame.ordinarymvp.model;
+package com.dame.ordinarymvp.mvp.model;
 
 import com.dame.ordinarymvp.bean.JokesBean;
 import com.dame.ordinarymvp.contract.MainContract;
 import com.dame.ordinarymvp.http.HttpResult;
 import com.dame.ordinarymvp.http.RetrofitUtils;
-import com.dame.ordinarymvp.mvp.BaseModel;
+import com.dame.ordinarymvp.base.BaseModel;
 
 import java.util.Map;
 

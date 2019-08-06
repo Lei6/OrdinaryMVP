@@ -10,53 +10,34 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dame.ordinarymvp.R;
+import com.dame.ordinarymvp.adapter.baseadapter.CommonAdapter;
+import com.dame.ordinarymvp.adapter.baseadapter.OnItemClickListener;
+import com.dame.ordinarymvp.adapter.baseadapter.ViewHolder;
 import com.dame.ordinarymvp.bean.JokesBean;
+import com.dame.ordinarymvp.utils.ToastUtils;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
+public class MainAdapter extends CommonAdapter<JokesBean.ListBean> {
 
-    private List<JokesBean.ListBean> list;
-    private Context mContext;
 
-    public MainAdapter(List<JokesBean.ListBean> list, Context mContext) {
-        this.list = list;
-        this.mContext = mContext;
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_mine, parent, false));
+    public MainAdapter(Context mContext, List<JokesBean.ListBean> mData, int mLayoutId) {
+        super(mContext, mData, mLayoutId);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.creteJokeTime.setText(list.get(position).getUpdateTime());
-        holder.jokeContent.setText(list.get(position).getContent());
-    }
+    public void bindData(com.dame.ordinarymvp.adapter.baseadapter.ViewHolder holder, JokesBean.ListBean listBean, int position) {
+        holder.setText(R.id.joke_content, listBean.getContent());
+        holder.setText(R.id.crete_joke_time, listBean.getUpdateTime());
+        holder.setOnItemClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.show(mContext, listBean.getContent());
+            }
+        });
 
-    @Override
-    public int getItemCount() {
-        if (list==null) {
-            return 0;
-        }
-        return list.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        @BindView(R.id.joke_content)
-        TextView jokeContent;
-        @BindView(R.id.crete_joke_time)
-        TextView creteJokeTime;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-        }
     }
 }

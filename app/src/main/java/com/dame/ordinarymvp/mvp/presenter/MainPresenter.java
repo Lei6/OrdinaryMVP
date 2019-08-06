@@ -1,12 +1,12 @@
-package com.dame.ordinarymvp.presenter;
+package com.dame.ordinarymvp.mvp.presenter;
 
 
 import com.dame.ordinarymvp.bean.JokesBean;
 import com.dame.ordinarymvp.contract.MainContract;
 import com.dame.ordinarymvp.http.BaseObserver;
 import com.dame.ordinarymvp.http.HttpResult;
-import com.dame.ordinarymvp.model.MainModel;
-import com.dame.ordinarymvp.mvp.BasePresenter;
+import com.dame.ordinarymvp.mvp.model.MainModel;
+import com.dame.ordinarymvp.base.BasePresenter;
 import com.dame.ordinarymvp.rx.RxSchedulers;
 
 import java.util.Map;

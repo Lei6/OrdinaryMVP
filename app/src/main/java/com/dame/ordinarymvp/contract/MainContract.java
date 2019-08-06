@@ -2,8 +2,8 @@ package com.dame.ordinarymvp.contract;
 
 import com.dame.ordinarymvp.bean.JokesBean;
 import com.dame.ordinarymvp.http.HttpResult;
-import com.dame.ordinarymvp.mvp.IModel;
-import com.dame.ordinarymvp.mvp.IView;
+import com.dame.ordinarymvp.base.IModel;
+import com.dame.ordinarymvp.base.IView;
 
 import java.util.Map;
 

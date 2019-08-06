@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dame.ordinarymvp.adapter.MainAdapter;
+import com.dame.ordinarymvp.adapter.baseadapter.OnItemClickListener;
 import com.dame.ordinarymvp.base.BaseMvpActivity;
 import com.dame.ordinarymvp.bean.JokesBean;
 import com.dame.ordinarymvp.contract.MainContract;
-import com.dame.ordinarymvp.presenter.MainPresenter;
+import com.dame.ordinarymvp.mvp.presenter.MainPresenter;
+import com.dame.ordinarymvp.utils.ToastUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -52,8 +54,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     protected void initData() {
-        Map<String,String> map = new HashMap<>();
-        map.put("page","1");
+        Map<String, String> map = new HashMap<>();
+        map.put("page", "1");
         mPresenter.requestData(map);
     }
 
@@ -69,12 +71,18 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     public void showJokes(JokesBean jokesBean) {
-        if (jokesBean==null){
+        if (jokesBean == null) {
             return;
         }
         List<JokesBean.ListBean> list = jokesBean.getList();
-        MainAdapter adapter = new MainAdapter(list,MainActivity.this);
+        MainAdapter adapter = new MainAdapter(MainActivity.this, list, R.layout.item_mine);
         recycle.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         recycle.setAdapter(adapter);
+//        adapter.setOnItemClickListener(new OnItemClickListener() {
+//            @Override
+//            public void onItemClick(Object object, int postion) {
+//                ToastUtils.show(MainActivity.this,"hh");
+//            }
+//        });
     }
 }

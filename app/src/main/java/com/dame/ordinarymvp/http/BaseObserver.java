@@ -6,7 +6,7 @@ import android.util.Log;
 
 
 import com.dame.ordinarymvp.http.exception.ServerException;
-import com.dame.ordinarymvp.mvp.IView;
+import com.dame.ordinarymvp.base.IView;
 
 import java.net.ConnectException;
 import java.net.UnknownHostException;

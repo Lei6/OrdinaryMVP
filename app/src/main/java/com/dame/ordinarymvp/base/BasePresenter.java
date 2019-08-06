@@ -1,4 +1,4 @@
-package com.dame.ordinarymvp.mvp;
+package com.dame.ordinarymvp.base;
 
 import com.dame.ordinarymvp.utils.Preconditions;
 import com.trello.rxlifecycle2.LifecycleProvider;

@@ -11,8 +11,6 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.dame.ordinarymvp.mvp.BasePresenter;
-import com.dame.ordinarymvp.mvp.IView;
 import com.squareup.leakcanary.RefWatcher;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
